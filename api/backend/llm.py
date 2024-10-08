@@ -13,7 +13,7 @@ from langchain_community.llms import Ollama
 from langchain_core.prompts import PromptTemplate
 
 # Load Mistral model
-mistral_model = Ollama(model_name="mistral")
+mistral_model = Ollama("mistral")
 
 # Initialize Flask app
 app = Flask(__name__)
