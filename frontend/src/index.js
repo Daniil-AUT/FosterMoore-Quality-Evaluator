@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'; // Import BrowserRouter
+import { HashRouter } from 'react-router-dom'; // Use HashRouter for routing
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
@@ -8,9 +8,9 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter> {/* Wrap App with BrowserRouter */}
+    <HashRouter> {/* Wrap App with HashRouter instead of BrowserRouter */}
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
 
