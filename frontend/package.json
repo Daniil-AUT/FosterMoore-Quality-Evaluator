@@ -5,6 +5,7 @@
   "engines": {
     "node": "18.17.0"
   },
+  "homepage": "https://Daniil-AUT.github.io/FosterMoore-Quality-Evaluator/frontend", 
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
     "@emotion/react": "^11.13.3",
@@ -29,11 +30,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "dev": "react-scripts start",
-  "build": "react-scripts build",
-  "start": "react-scripts start",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build", 
+    "deploy": "gh-pages -d build" 
   },
   "eslintConfig": {
     "extends": [
@@ -52,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
