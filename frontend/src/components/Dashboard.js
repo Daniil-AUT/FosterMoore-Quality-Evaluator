@@ -53,7 +53,7 @@ const Dashboard = () => {
 
       try {
         setIsLoading(true);
-        const response = await axios.get('http://localhost:5000/api/user-stories', {
+        const response = await axios.get('https://fostermoore-quality-evaluator.onrender.com/api/user-stories', {
           params: { jira_url: domain, jira_project_key: 'SCRUM', username: email, api_token: apiToken },
           timeout: 30000,
         });

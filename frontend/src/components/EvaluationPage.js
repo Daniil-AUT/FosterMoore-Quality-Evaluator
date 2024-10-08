@@ -48,8 +48,8 @@ const EvaluationPage = () => {
           if (story.evaluation) return { ...story, id: index + 1 };
 
           const [ambiguityResponse, wellFormedResponse] = await Promise.all([
-            axios.post('http://localhost:5000/predict/ambiguity', { user_story: story.summary }),
-            axios.post('http://localhost:5000/predict/well-formed', { user_story: story.summary }),
+            axios.post('https://fostermoore-quality-evaluator.onrender.com/predict/ambiguity', { user_story: story.summary }),
+            axios.post('https://fostermoore-quality-evaluator.onrender.com/predict/well-formed', { user_story: story.summary }),
           ]);
 
           return {
@@ -94,8 +94,8 @@ const EvaluationPage = () => {
   const handleApplyImprovement = async (storyId, newStory) => {
     try {
       const [ambiguityResponse, wellFormedResponse] = await Promise.all([
-        axios.post('http://localhost:5000/predict/ambiguity', { user_story: newStory }),
-        axios.post('http://localhost:5000/predict/well-formed', { user_story: newStory }),
+        axios.post('https://fostermoore-quality-evaluator.onrender.com/predict/ambiguity', { user_story: newStory }),
+        axios.post('https://fostermoore-quality-evaluator.onrender.com/predict/well-formed', { user_story: newStory }),
       ]);
 
       setEvaluatedStories((prevStories) =>

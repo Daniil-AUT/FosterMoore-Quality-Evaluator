@@ -39,7 +39,7 @@ const Predictor = () => {
 
     setIsFetchingSuggestions(true);
     try {
-      const response = await axios.post('http://localhost:5000/suggestions', {
+      const response = await axios.post('https://fostermoore-quality-evaluator.onrender.com/suggestions', {
         user_story: userStory,
         well_formed_prediction: predictions['well-formed'],
         ambiguity_prediction: predictions['ambiguity'],
@@ -60,8 +60,8 @@ const Predictor = () => {
 
   const fetchPrediction = async (userStory, selectedKeys) => {
     const endpoints = {
-      wellFormed: 'http://localhost:5000/predict/well-formed',
-      ambiguity: 'http://localhost:5000/predict/ambiguity',
+      wellFormed: 'https://fostermoore-quality-evaluator.onrender.com/predict/well-formed',
+      ambiguity: 'https://fostermoore-quality-evaluator.onrender.com/predict/ambiguity',
     };
 
     const predictionResults = {};

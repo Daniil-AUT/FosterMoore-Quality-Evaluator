@@ -34,7 +34,7 @@ const Login = () => {
     }
 
     try {
-      const verifyResponse = await axios.post('http://localhost:5000/verify-credentials', {
+      const verifyResponse = await axios.post('https://fostermoore-quality-evaluator.onrender.com/verify-credentials', {
         email,
         apiToken,
         jiraDomain: domain,
