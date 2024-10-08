@@ -2,13 +2,20 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/build/**/*",
-      "use": "@vercel/static"
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "frontend/build"
+      }
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",  
+      "dest": "https://fostermoore-quality-evaluator.onrender.com/api/$1"  
+    },
+    {
+      "src": "/(.*)",  
       "dest": "/frontend/build/$1"
     }
   ]
