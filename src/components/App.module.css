@@ -1,0 +1,203 @@
+body {
+    background-color: hsl(0, 0%, 8%);
+    margin: 0; 
+    font-family: Arial, sans-serif; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;      
+}
+
+.title {
+    text-align: center;
+    padding: 20px; 
+    color: #ffffff; /* Lighter color for header */
+    font-size: 2em; /* Increased font size for visibility */
+}
+
+.loading {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container {
+    background-color: rgb(37, 37, 37);
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    color: white;
+    width: 600px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); 
+    border-radius: 8px;
+    border: 0.5px solid white;
+    gap: 30px; /* Increased gap between elements */
+    transition: transform 0.2s ease; /* Transition for interactive effect */
+}
+
+.container:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 20px;
+}
+
+/* Form styles */
+form {           
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+}
+
+/* Style for textarea */
+textarea {         
+    width: 100%; 
+    align-self: center;
+    padding: 10px; 
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    resize: vertical; 
+    font-size: 16px; /* Increased font size for readability */
+    margin-top: 10px; /* Add space above textarea */
+}
+
+/* Placeholder text styling */
+textarea::placeholder {
+    color: #aaa; /* Placeholder color */
+}
+
+/* Stylish buttons */
+button {
+    padding: 12px 24px; 
+    background-color: #b3009e;  
+    color: white;                    
+    border-radius: 8px; 
+    border: none; 
+    cursor: pointer;        
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+button:hover {
+    background-color: #78006a; 
+    transform: translateY(-2px); 
+}
+
+/* Navigation styles */
+.nav {
+    margin: 20px 0;
+}
+
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+    color: white;
+}
+
+.nav ul li {
+    display: inline;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: #b3009e;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.active .tab::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.error {
+    color: #ff4d4d;
+}
+
+/* Criteria designs */
+.criteriaSection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    text-align: center; /* Center align the criteria section text */
+}
+
+/* Update criteria items to be in a row */
+.criteriaRow {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between checkboxes */
+    width: 100%; /* Ensure row takes full width */
+}
+
+/* Quality Criteria header */
+.criteriaHeader {
+    font-size: 1.5em; /* Size for the Quality Criteria text */
+    margin: 10px 0; /* Space above and below */
+}
+
+/* Stylish checkboxes */
+.criteriaItem {
+    display: flex;
+    align-items: center; /* Align checkbox with label */
+    flex-grow: 1; /* Allow checkbox items to grow and fill the container */
+}
+
+/* Checkbox styles */
+.criteriaItem input[type="checkbox"] {
+    margin: 0; 
+    appearance: none; 
+    width: 30px; /* Increased size */
+    height: 30px; /* Increased size */
+    border: 2px solid #b3009e; 
+    border-radius: 4px; 
+    position: relative; 
+    cursor: pointer; 
+    display: flex; /* Enable flexbox for centering content */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+.criteriaItem input[type="checkbox"]:checked {
+    background-color: #b3009e; 
+}
+
+/* Replace tick with an X */
+.criteriaItem input[type="checkbox"]:checked::after {
+    content: '✖'; /* Use the X character */
+    color: white; /* X color */
+    font-size: 20px; /* Adjust size as needed */
+    line-height: 30px; /* Center vertically */
+    position: absolute; /* Position it in the center */
+}
+
+.criteriaItem input[type="checkbox"]:not(:checked)::after {
+    content: ''; /* No content for unchecked boxes */
+}
+
+/* Centered header styles in App.js */
+h1 {
+    text-align: center; /* Center align the h1 title */
+    color: #ffffff; /* Title color */
+    margin: 20px 0; /* Space above and below the title */
+}

@@ -1,0 +1,190 @@
+/* NavBar.module.css */
+
+/* Base styles for navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    font-family: 'Roboto', sans-serif; /* Choose your font here */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+/* Light mode styles */
+.light {
+    background-color: #ffffff;
+    color: #000000; /* Text color */
+}
+
+/* Dark mode styles */
+.dark {
+    background-color: #1a1a1a; /* Dark background */
+    color: #ffffff; /* Text color */
+}
+
+/* Navbar content */
+.navbarContent {
+    display: flex;
+    align-items: center;
+}
+
+/* Button styles for light mode */
+.lightButton {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+/* Button styles for dark mode */
+.darkButton {
+    background-color: #333; /* Dark button background */
+    color: #fff; /* Button text color */
+}
+
+/* Button hover effects */
+.iconButton:hover, 
+.backButton:hover, 
+.loginButton:hover, 
+.logoutButton:hover {
+    background-color: #e0e0e0; /* Light hover effect for light mode */
+}
+
+.dark .iconButton:hover, 
+.dark .backButton:hover, 
+.dark .loginButton:hover, 
+.dark .logoutButton:hover {
+    background-color: #444; /* Darker hover effect for dark mode */
+}
+
+/* Hover effects for the title */
+.titleContainer:hover {
+    cursor: pointer;
+    opacity: 0.8; /* Slightly darker on hover */
+}
+
+.dark .titleContainer:hover {
+    opacity: 0.9; /* More pronounced hover effect for dark mode */
+}
+
+/* Additional styling for title and text */
+.titleContainer {
+    display: flex;
+    align-items: center; /* Center title and icon vertically */
+}
+
+.darkText {
+    color: #fff; /* Dark mode text color */
+}
+
+.lightText {
+    color: #000; /* Light mode text color */
+}
+
+.dark .title {
+    color: #ffcc00; /* Gold color for the title in dark mode */
+}
+
+.dark .title:hover {
+    color: #ffd700; /* Slightly lighter gold on hover */
+}
+
+/* Theme toggle container */
+.themeToggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 20px; /* Space between toggle and buttons on the right */
+}
+
+/* Styling for the theme toggle switch */
+.switch {
+    position: relative;
+    width: 40px; /* Width of the switch */
+    height: 20px; /* Height of the switch */
+    background-color: #e0e0e0;
+    border-radius: 50px; /* Rounded switch */
+    transition: background-color 0.3s ease; /* Smooth transition for background */
+}
+
+/* Position of the switch in dark mode */
+.dark .switch {
+    background-color: #333; /* Dark switch background */
+}
+
+/* Inner icon of the switch */
+.switchIcon {
+    position: absolute;
+    width: 18px; /* Width of the icon */
+    height: 18px; /* Height of the icon */
+    border-radius: 50%; /* Round shape */
+    background: white; /* Background color for the switch icon */
+    transition: transform 0.3s ease, background 0.3s ease; /* Smooth transition for position */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center icon inside */
+}
+
+/* Slide the icon to the right in dark mode */
+.dark .switchIcon {
+    transform: translateX(20px); /* Move icon to the right */
+}
+
+/* Icons styling */
+.icon {
+    font-size: 14px;
+    transition: color 0.3s ease; /* Smooth transition for icon color */
+}
+
+/* Sun and moon icons color */
+.sunIcon {
+    color: #ffcc00; /* Sun icon color for dark theme */
+}
+
+.moonIcon {
+    color: #555; /* Moon icon color for light theme */
+}
+
+/* Color change for switch icon when in dark mode */
+.dark .switchIcon {
+    background: #fff; /* Switch icon background turns white in dark mode */
+}
+/* Light mode switch styling */
+.lightSwitch {
+    background-color: #e0e0e0; /* Background for light mode */
+}
+.dark .switch {
+    background-color: #b5b5b4;
+}
+/* NavBar.module.css */
+
+.navbar {
+    background-color: white; /* or your desired background color */
+    padding: 10px 20px; /* Add some padding for better appearance */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Make shadow more intense */
+    position: relative; /* Ensure the shadow is positioned correctly */
+    z-index: 10; /* Adjust z-index if needed to layer above content */
+  }
+  
+  .dark {
+    background-color: #333; /* Dark theme background */
+    color: white; /* Light text on dark background */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* Darker and more intense shadow for dark theme */
+  }
+  
+  .light {
+    background-color: white; /* Light theme background */
+    color: black; /* Dark text on light background */
+  }
+  
+  .titleContainer {
+    cursor: pointer; /* Make title clickable */
+  }
+  
+  .navbarContent {
+    display: flex;
+    align-items: center; /* Center the content vertically */
+  }
+  

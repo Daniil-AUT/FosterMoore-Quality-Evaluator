@@ -1,0 +1,46 @@
+/* Login.module.css */
+
+.login {
+  color: #fff; /* White text color for better contrast */
+  padding: 40px; /* Padding around the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Drop shadow */
+  max-width: 500px; /* Maximum width for the form */
+  margin: auto; /* Center the form horizontally */
+  margin-top: 3%;
+}
+
+.buttonContainer {
+  display: flex; /* Flexbox for button alignment */
+  justify-content: space-between; /* Space between buttons */
+}
+
+.loginButton {
+  flex: 1; /* Allow button to take full space */
+  margin-right: 10px; /* Margin between buttons */
+}
+
+.goBackButton {
+  flex: 1; /* Allow button to take full space */
+}
+
+input, .ant-input-password {
+  background-color: #3a3a3a; /* Darker background for input fields */
+  border: none; /* Remove default border */
+  color: #fff; /* White text for input */
+}
+
+input:focus, .ant-input-password:focus {
+  outline: none; /* Remove blue outline */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Optional: Add a subtle shadow on focus */
+}
+
+.ant-checkbox-inner {
+  background-color: #3a3a3a; /* Dark background for checkbox */
+  border: 1px solid #fff; /* White border for checkbox */
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #1e1e1e; /* Darker when checked */
+  border: 1px solid #fff; /* Keep white border when checked */
+}

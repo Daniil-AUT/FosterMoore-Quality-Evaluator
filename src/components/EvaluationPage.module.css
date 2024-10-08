@@ -1,0 +1,477 @@
+/* General Layout */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color:   #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.ant-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+.ant-layout-content {
+  padding: 40px 24px;
+  background-color: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Card Styles */
+.ant-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  padding: 16px; /* Adjusted to ensure consistent padding */
+  transition: all 0.3s ease;
+}
+
+.ant-card-body {
+  padding: 16px 16px 12px; /* Reduced bottom padding for consistency */
+}
+
+.ant-card-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Tags (Gestalt - Similarity & Feedback) */
+.ant-tag {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 8px;
+  padding: 4px 8px;
+}
+
+.ant-tag.red {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.ant-tag.green {
+  background-color: #52c41a;
+  color: white;
+}
+
+/* Input & Select (Proximity & Affordance) */
+.ant-input, .ant-select {
+  border-radius: 5px;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  transition: border 0.3s ease;
+}
+
+.ant-input:focus, .ant-select:focus {
+  border-color: #1890ff;
+}
+
+.ant-input-affix-wrapper {
+  border-radius: 5px;
+}
+
+.ant-select-selector {
+  height: 40px !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Button */
+.ant-btn {
+  border-radius: 5px;
+  height: 40px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ant-btn:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Gestalt Principle - Closure */
+.user-story-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px; /* Adjusted padding for consistency */
+  margin-bottom: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.user-story-card:hover {
+  background-color: #fafafa;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Flex Layout for Filters (Proximity & Continuity) */
+.filter-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.filter-section .ant-select {
+  width: 200px;
+}
+
+/* List Styles */
+.ant-list {
+  padding: 0;
+}
+
+.ant-list-item {
+  padding: 0;
+  border-bottom: none;
+}
+
+.ant-spin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+/* Modal */
+.improve-modal {
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.improve-modal .ant-modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Typography */
+h2.ant-typography, .ant-typography.title {
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+.ant-typography.text {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Affordance for Buttons */
+.ant-btn-primary {
+  background-color: #1890ff;
+  border-color: #1890ff;
+  color: white;
+}
+
+.ant-btn-primary:hover {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.ant-btn-danger {
+  background-color: #ff4d4f;
+  border-color: #ff4d4f;
+  color: white;
+}
+
+.ant-btn-danger:hover {
+  background-color: #ff7875;
+  border-color: #ff7875;
+}
+
+/* Responsive Design (HCI - Efficiency) */
+@media (max-width: 768px) {
+  .filter-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ant-input, .ant-select {
+    width: 100%;
+  }
+
+  .ant-btn {
+    width: 100%;
+  }
+}
+
+/* Slider Container */
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+/* Slider Styles */
+.slider {
+  width: 100%;
+}
+
+/* Stories Container */
+.storiesContainer {
+  display: flex; /* Use flexbox for better alignment */
+  flex-direction: column; 
+  align-items: center; 
+}
+
+/* User Stories Grid */
+.userStoriesGrid {
+  display: grid; /* Use CSS Grid for layout */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust for responsiveness */
+  gap: 16px; /* Space between cards */
+  width: 100%; /* Ensure it takes the full width */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Story Card */
+.storyCard {
+  border-radius: 8px; /* Add some border radius */
+  overflow: hidden; /* To avoid overflow issues with the content */
+  text-align: center; /* Center content in cards */
+  transition: transform 0.2s; /* Animation for hover effect */
+}
+
+.storyCard:hover {
+  transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+/* Story Description */
+.storyDescription {
+  max-height: 50px; /* Limit height for better alignment */
+  overflow: hidden; /* Prevent overflow */
+  text-overflow: ellipsis; /* Show ellipsis for overflowed text */
+  white-space: nowrap; /* Prevent wrapping */
+}
+.storiesGrid {
+  display: grid;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  flex-grow: 1;
+}
+.storiesGrid {
+  display: grid;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.storyCard {
+  padding: 16px; /* Increased padding for the card */
+  border-radius: 8px; /* Optional: Make corners rounded */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow for depth */
+}
+
+.cardContent {
+  min-height: 100px; /* Ensure a minimum height to prevent truncation */
+  overflow: hidden; /* Prevent content overflow */
+  padding: 12px 0; /* Additional padding around text */
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  flex-grow: 1;
+}
+.card {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: space-between; /* Space between content and button */
+  overflow: hidden; /* Prevent content from spilling out of card */
+  max-height: 400px; /* Set a maximum height */
+}
+
+.cardContent {
+  flex-grow: 1; /* Allow the content area to grow and take up available space */
+  min-height: 100px; /* Ensure consistent minimum height */
+  overflow: hidden; /* Prevent overflow */
+}
+.storiesGrid {
+  display: grid;
+  grid-gap: 16px;
+  margin-top: 24px;
+}
+
+.sliderContainer {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  flex-grow: 1;
+  margin-right: 16px;
+}
+.storiesGrid {
+  display: grid;
+  grid-gap: 16px;
+  margin-top: 24px;
+}
+
+.sliderContainer {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  flex-grow: 1;
+  margin-left: 16px;
+}
+
+/* Add this style to ensure proper text flow and management */
+.storyText {
+  overflow: hidden; /* Prevent overflow */
+  display: -webkit-box; /* Required for webkit */
+  -webkit-line-clamp: 5; /* Change this number to the maximum number of lines */
+  -webkit-box-orient: vertical; /* Set box orientation */
+  margin-bottom: 16px; /* Space below text */
+}
+/* styles.module.css */
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust min width as needed */
+  gap: 16px; /* Space between cards */
+}
+
+.storyCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content is spaced correctly */
+  padding: 16px; /* Padding inside cards */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.cardContent {
+  flex-grow: 1; /* Allow content to grow */
+}
+
+.tagContainer {
+  margin-top: 8px; /* Space above tags */
+  display: flex;
+  flex-wrap: wrap; /* Allow tags to wrap if necessary */
+  gap: 4px; /* Space between tags */
+}
+
+.improveButton {
+  align-self: flex-end; /* Align button to the bottom right */
+  margin-top: 8px; /* Space above the button */
+}
+.storyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.storyCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space between content and button */
+  position: relative; /* Enable positioning for extra button */
+}
+
+.outcomeTags {
+  margin-bottom: auto; /* Push tags to the top */
+}
+
+.improveButton {
+  align-self: flex-end; /* Align button to the right */
+  margin-top: auto; /* Ensure it stays at the bottom */
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between slider and label */
+}
+
+.slider {
+  flex: 1; /* Allow slider to take available space */
+  margin-right: 16px; /* Space between slider and label */
+}
+.faded {
+  opacity: 0.5; /* Change opacity for fading effect */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition */
+}
+
+.buttonsContain {
+  background-color: #1890ff;
+  
+}
+.blurred-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Apply the blur filter here */
+  filter: blur(5px);
+  /* Set background color for better visibility (optional) */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Ensure it's behind the buttons */
+  z-index: -1;
+}
+/* Custom button styles for Ant Design buttons */
+.custom-button-primary {
+  background-color: #4CAF50 !important; /* Green */
+  color: white !important;
+  border: none !important;
+  border-radius: 4px;
+  padding: 10px 16px;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button-primary:hover {
+  background-color: #45a049 !important; /* Darker green on hover */
+}
+
+.custom-button-primary:active {
+  transform: scale(0.95); /* Scale down on click */
+}
+
+/* Custom styles for secondary button */
+.custom-button-secondary {
+  background-color: #f0f0f0 !important; /* Light grey */
+  color: #333 !important;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 4px;
+  padding: 10px 16px;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button-secondary:hover {
+  background-color: #e8e8e8 !important; /* Light grey on hover */
+}
+
+.custom-button-secondary:active {
+  transform: scale(0.95); /* Scale down on click */
+}
+
+/* Positioning for the buttons */
+.button-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px; /* Space between buttons */
+}

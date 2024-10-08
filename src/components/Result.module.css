@@ -1,0 +1,60 @@
+.resultContainer {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack predictions vertically */
+  background-color: #1c1c1c; /* Dark background for the container */
+  padding: 20px; /* Add padding around the container */
+  border-radius: 8px; /* Rounded corners for the container */
+}
+
+.prediction {
+  margin-bottom: 15px; /* Space between each prediction block */
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.prediction:hover {
+  background-color: #2a2a2a; /* Slightly lighter background on hover */
+}
+
+h2 {
+  color: #f0f0f0; /* Light text color for headings */
+  display: flex; /* Align arrow and text horizontally */
+  justify-content: space-between; /* Space between text and button */
+  align-items: center; /* Center items vertically */
+}
+
+.arrowButton {
+  background-color: transparent; /* Transparent background */
+  border: none; /* Remove default border */
+  color: #a0a0a0; /* Light grey color for the button text */
+  font-size: 20px; /* Adjust font size for arrow */
+  cursor: pointer; /* Pointer cursor for clickable button */
+  padding: 5px; /* Add padding for button */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.arrowButton:hover {
+  color: #ffffff; /* Change color on hover */
+}
+
+.card {
+  max-height: 0; /* Start hidden */
+  overflow: hidden; /* Hide content initially */
+  padding: 0 10px; /* Padding for the card */
+  background-color: #2a2a2a; /* Darker background for the card */
+  border: 1px solid #444; /* Slightly lighter border */
+  border-radius: 5px; /* Rounded corners */
+  color: #f0f0f0; /* Light text color for contrast */
+  transition: max-height 0.3s ease, padding 0.3s ease; /* Animate height and padding */
+}
+
+.card.visible {
+  max-height: 100px; /* Set a max-height when visible */
+  padding: 10px; /* Add padding when visible */
+}
+
+.definition {
+  margin: 5px 0; /* Spacing for the definition text */
+  line-height: 1.5; /* Improved line height for readability */
+  font-size: 14px; /* Smaller font size for definitions */
+  color: #e0e0e0; /* Slightly lighter color for the definition text */
+}

@@ -1,0 +1,86 @@
+.modal {
+  width: 100%;
+  max-width: 800px;  /* Set a max width */
+  min-width: 400px;  /* Set a min width */
+  border-radius: 8px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.textarea {
+  margin-bottom: 20px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.submitButton {
+  margin-right: 10px;
+}
+
+.loadingMessage {
+  display: flex;
+  align-items: center;
+}
+
+.resultContainer {
+  margin-top: 10px;
+}
+
+.resultBox {
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.passed {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.failed {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.aiSuggestionsContainer {
+  margin-top: 10px;
+}
+
+.tabs .ant-tabs-nav {
+  background-color: #f0f2f5;
+  border-radius: 4px;
+}
+
+.tabs .ant-tabs-tab {
+  color: #1890ff;
+}
+
+.tabs .ant-tabs-tab-active {
+  background-color: #1890ff;
+  color: #fff;
+}
+
+/* New styles for AI loading */
+.aiLoadingMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the loading message */
+  flex-direction: column;  /* Stack loading spinner and text vertically */
+  padding: 20px;          /* Add some padding around the message */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

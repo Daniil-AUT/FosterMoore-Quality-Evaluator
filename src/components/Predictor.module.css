@@ -1,0 +1,194 @@
+/* General Container for the Predictor */
+.predictorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the start for better spacing */
+    padding: 20px;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  }
+  
+  /* Card styling */
+  .predictorCard {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Input Field Styles */
+  .userStoryInput {
+    border-radius: 8px;
+    width: 100%; /* Full width for better responsiveness */
+  }
+  
+  /* Error Message Styles */
+  .errorMessage {
+    margin-bottom: 20px;
+    align-items: center;
+    width: fit-content; /* Limit the width of the error message */
+    text-align: center;
+    color: #ff4d4f; /* Optional: Add a color for error messages */
+  }
+  
+  /* Criteria Section Styles */
+  .criteriaContainer {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9; /* Light background color for the criteria section */
+    border-radius: 8px;
+    border: 1px solid rgba(33, 33, 33, 0.2); /* Use rgba for better opacity control */
+  }
+  
+  /* Button Layout */
+  .clickableSections {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between; /* Adjust to spread buttons */
+  }
+  
+  /* Result Card Styles */
+  .resultCard {
+    margin-top: 15px;
+    padding: 10px; /* Add padding for consistency */
+    border-radius: 8px; /* Ensure results have rounded corners */
+    border: 1px solid #d9d9d9; /* Optional border for clarity */
+  }
+  
+  /* Suggestion Card Styles */
+  .suggestionCard {
+    margin: 10px 0;
+    padding: 10px; /* Add padding for consistency */
+    border-radius: 8px; /* Rounded corners for cards */
+    border: 1px solid #d9d9d9; /* Optional border */
+  }
+  
+  /* Button Styles */
+  .submitButton,
+  .resetButton {
+    margin-right: 10px;
+  }
+  
+  /* Tabs Styles */
+  .tabs {
+    margin-top: 20px;
+  }
+  
+  /* Criteria Button Styles */
+  .criteriaButton {
+    flex: 1; /* Allow buttons to grow */
+    margin: 0 5px; /* Consistent spacing */
+    text-align: center; /* Center align text */
+    padding: 10px; /* Add padding for better clickability */
+    border-radius: 8px; /* Rounded corners for buttons */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition on hover */
+  }
+  
+  .criteriaButton:hover {
+    background-color: #e6f7ff; /* Lighten button on hover */
+    transform: scale(1.05); /* Slight scale effect on hover */
+  }
+  
+  /* Active Button Styles */
+  .active {
+    background-color: #1890ff; /* Active button color */
+    color: #fff; /* Text color for active button */
+  }
+  
+  /* Typing Animation for Suggestions */
+  .suggestionText {
+    display: inline-block; /* Ensures text width adapts to its content */
+    font-size: 16px; /* Adjust to desired size */
+    animation: typing 2s steps(30, end); /* Typing effect */
+  }
+  
+  /* Keyframes for Typing Animation */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  /* Loading Dots Animation */
+  .loadingDots {
+    animation: blink 1.5s infinite;
+  }
+  
+  @keyframes blink {
+    0%,
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    80%,
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  /* Media Query for Responsive Design */
+  @media (max-width: 768px) {
+    .predictorContainer {
+      flex-direction: column; /* Stack items on smaller screens */
+      align-items: center; /* Center items */
+    }
+  
+    .clickableSections {
+      flex-direction: column; /* Stack buttons vertically */
+      align-items: stretch; /* Ensure buttons stretch full width */
+    }
+  
+    .criteriaButton {
+      margin: 5px 0; /* Vertical margin for stacked buttons */
+    }
+  }
+  .suggestionContainer {
+    padding: 10px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    border: 1px solid #e0e0e0; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    max-height: 300px; /* Limit height to ensure readability */
+    overflow-y: auto; /* Allow scrolling if content exceeds max height */
+  }
+  
+  .suggestionItem {
+    margin: 8px 0; /* Space between suggestions */
+    font-size: 16px; /* Base font size for suggestions */
+    line-height: 1.5; /* Improved readability */
+    color: #333; /* Dark text color */
+  }
+  .instructionBox {
+    background-color: #f7f7f7; /* Slightly darker background */
+    border: 1px solid #e0e0e0; /* Border for the box */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Spacing around the text */
+    margin-bottom: 15px; /* Space below the box */
+  }
+  .predictorContainer {
+    position: relative; /* Ensure positioning context for absolute elements */
+    padding: 20px;
+}
+
+.instructionsButton {
+    position: absolute; /* Positioning the button absolutely */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    border-radius: 8px;
+    margin-bottom: 20px; /* Space below the button */
+}
+.predictionAdvice {
+  display: flex;               /* Use flexbox for alignment */
+  align-items: center;        /* Center the icon vertically */
+  margin: 10px 0;            /* Add margin for spacing */
+}
+
+.icon {
+  margin-right: 5px;         /* Keep space between icon and text */
+  line-height: 1;            /* Ensure icon height doesn't push text */
+}

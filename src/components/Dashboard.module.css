@@ -1,0 +1,214 @@
+/* General Page Container */
+.pageContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333; /* Ensure text is legible */
+}
+
+/* Header Style */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pageTitle {
+  font-size: 2.5em;
+  margin: 0;
+  color: #333;
+  font-weight: bold; /* Increased weight for better visibility */
+}
+
+/* Evaluate Button Style */
+.evaluateButton {
+  font-size: 1.1em;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green for positive action */
+  color: white; /* White text for contrast */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.evaluateButton:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Filters Container Style */
+.filtersContainer {
+  background-color: #f0f8ff; /* Soft background for contrast */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Toggle Filters Button */
+.toggleFiltersButton {
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: #1890ff; /* Blue for action */
+  color: white; /* White text for contrast */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Padding for comfort */
+  cursor: pointer; /* Pointer cursor */
+}
+
+.toggleFiltersButton:hover {
+  background-color: #0e76d3; /* Darker blue on hover */
+}
+
+/* Divider Style */
+.filterDivider {
+  margin: 15px 0;
+  border: 1px solid #ddd; /* Light divider for separation */
+}
+
+/* Search Input Style */
+.searchInput {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+  padding: 10px; /* Added padding for comfort */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Slider Container */
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Slider Style */
+.slider {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+/* Criteria Section */
+.criteriaSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Checkbox Style */
+.criteriaCheckbox {
+  font-size: 1.1em;
+}
+
+/* Button Group Style */
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+}
+
+/* User Stories Container */
+.storiesContainer {
+  width: 100%;
+}
+
+.userStoriesGrid {
+  display: grid;
+  gap: 20px; /* Space between cards */
+}
+
+/* Story Card Style */
+.storyCard {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  overflow: auto;
+  background-color: white; /* White background for cards */
+  border-radius: 5px; /* Rounded corners */
+  padding: 15px; /* Padding for content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.storyCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Slightly darker shadow on hover */
+}
+
+/* Selected Card Style */
+.selectedCard {
+  border: 2px solid #1890ff;
+  background-color: #e6f7ff; /* Light blue for selected state */
+}
+
+/* Story Description Style */
+.storyDescription {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+/* Story Status Style */
+.storyStatus {
+  margin-top: auto;
+  font-weight: bold;
+  color: #52c41a; /* Green for successful status */
+}
+
+/* Message Text Style */
+.messageText {
+  text-align: center;
+  font-size: 1.2em;
+  color: #ff4d4f; /* Red for error messages */
+}
+
+/* Error Container Style */
+.errorContainer {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Error Text Style */
+.errorText {
+  color: #ff4d4f;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .evaluateButton {
+    margin-top: 10px;
+  }
+
+  .sliderContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .slider {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+/* Filter Section */
+.filterSection {
+  padding: 15px;
+  background-color: #f7f7f7; /* Light background for filter section */
+  border-radius: 5px;
+}
+
+/* User Stories Grid for Consistency */
+.userStoriesGrid {
+  display: grid;
+  gap: 15px; /* Space between cards */
+}
