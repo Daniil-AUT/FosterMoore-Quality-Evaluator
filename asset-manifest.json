@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/FosterMoore-Quality-Evaluator/frontend/static/css/main.ecad46c8.css",
+    "main.js": "/FosterMoore-Quality-Evaluator/frontend/static/js/main.ec3e97e3.js",
+    "static/js/453.8ab44547.chunk.js": "/FosterMoore-Quality-Evaluator/frontend/static/js/453.8ab44547.chunk.js",
+    "index.html": "/FosterMoore-Quality-Evaluator/frontend/index.html",
+    "main.ecad46c8.css.map": "/FosterMoore-Quality-Evaluator/frontend/static/css/main.ecad46c8.css.map",
+    "main.ec3e97e3.js.map": "/FosterMoore-Quality-Evaluator/frontend/static/js/main.ec3e97e3.js.map",
+    "453.8ab44547.chunk.js.map": "/FosterMoore-Quality-Evaluator/frontend/static/js/453.8ab44547.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ecad46c8.css",
+    "static/js/main.ec3e97e3.js"
+  ]
+}
