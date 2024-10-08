@@ -1,0 +1,39 @@
+# Ignore node_modules in frontend
+node_modules/
+
+# Ignore build output from React frontend
+build/
+
+# Ignore Python virtual environment in backend
+/backend/venv/
+/backend/myenv/
+/backend/.venv
+/api/backend/.venv
+/api/backend/venv
+/api/backend/myenv
+.venv/
+# Ignore compiled Python files
+/backend/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Ignore environment variables file (if any)
+.env
+
+#Ignore venv directory
+venv/
+
+# Ignore log files
+*.log
+
+# Ignore other specific files or directories
+.DS_Store
+*.swp
+.vercel
+
+# IDE/editor specific files
+.vscode/
+.idea/
