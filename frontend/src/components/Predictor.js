@@ -202,7 +202,7 @@ const Predictor = () => {
               htmlType="submit" 
               loading={loading} 
               className={styles.submitButton} 
-              style={{ borderRadius: '8px', width: '150px', marginRight: '10px' }} 
+              style={{ borderRadius: '8px',backgroundColor: 'green', width: '150px', marginRight: '10px' }} 
             >
               {loading ? 'Analysing...' : 'Analyse User Story'}
             </Button>
