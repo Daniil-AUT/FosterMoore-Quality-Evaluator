@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'; // Import useEffect here
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from 'axios/dist/axios';
 import { Form, Input, Button, Alert, Typography, Checkbox } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import styles from './Login.module.css';
