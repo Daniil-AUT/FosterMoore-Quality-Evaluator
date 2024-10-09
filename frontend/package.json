@@ -59,5 +59,13 @@
     "@testing-library/react": "^16.0.1",
     "gh-pages": "^6.1.1",
     "jest": "^27.5.1"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!axios/.*)"  
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"   
+    }
   }
 }
