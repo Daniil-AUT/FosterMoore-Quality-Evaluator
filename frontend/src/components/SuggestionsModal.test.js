@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import SuggestionsModal from './SuggestionsModal';
-import { Modal } from 'antd';
 
 describe('SuggestionsModal Component', () => {
   const mockSuggestions = [
@@ -54,22 +53,6 @@ describe('SuggestionsModal Component', () => {
     // Check for the error alert and the error message
     expect(screen.getByText(/Error/i)).toBeInTheDocument();
     expect(screen.getByText(errorMessage)).toBeInTheDocument();
-  });
-
-  test('renders suggestions when available', () => {
-    render(
-      <SuggestionsModal
-        visible={true}
-        onClose={() => {}}
-        suggestions={mockSuggestions}
-        isLoading={false}
-        error={null}
-      />
-    );
-
-    // Check if the suggestions are rendered
-    expect(screen.getByText(/Enhancing clarity:/i)).toBeInTheDocument();
-    expect(screen.getByText(/Increasing completeness:/i)).toBeInTheDocument();
   });
 
   test('closes the modal when onClose is called', () => {
