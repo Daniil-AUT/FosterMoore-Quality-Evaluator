@@ -25,16 +25,16 @@ describe('Result Component', () => {
     const ambiguityButton = screen.getByText('Ambiguous').closest('h2').querySelector('button');
     const definition = screen.getByText(/A user story is considered ambiguous if it contains vague language or lacks clarity/i);
   
-    // Initially, definition should not be visible
-    expect(definition).not.toHaveClass('visible');
+    // Initially, the aria-expanded attribute should be false
+    expect(ambiguityButton).toHaveAttribute('aria-expanded', 'false');
   
-    // Click to show definition
+    // Click to show definition (expanding)
     fireEvent.click(ambiguityButton);
-    expect(definition).toHaveClass('visible');
+    expect(ambiguityButton).toHaveAttribute('aria-expanded', 'true');
   
-    // Click to hide definition
+    // Click to hide definition (collapsing)
     fireEvent.click(ambiguityButton);
-    expect(definition).not.toHaveClass('visible');
+    expect(ambiguityButton).toHaveAttribute('aria-expanded', 'false');
   });
 
   test('applies the correct class name based on prediction result', () => {
