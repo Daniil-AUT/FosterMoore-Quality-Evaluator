@@ -1,16 +1,14 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';  // Import MemoryRouter
-import App from './App';  // Assuming your App component is in the same directory
+import { render } from '@testing-library/react';
+import { Alert } from './Alert'; 
+import '@testing-library/jest-dom/extend-expect';
 
-test('renders learn react link', () => {
-  // Wrap App inside MemoryRouter for the test
-  render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
-  );
-  
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('Alert Component', () => {
+  it('renders children content', () => {
+    // Render the Alert component with a sample child and variant
+    const { getByText } = render(<Alert variant="success">Success Message</Alert>);
+    
+    // Check if the text 'Success Message' is rendered within the component
+    expect(getByText('Success Message')).toBeInTheDocument();
+  });
 });
