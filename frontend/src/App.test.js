@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';  // Import MemoryRouter to simulate routing
-import App from './App';  // Import the App component
+import { MemoryRouter } from 'react-router-dom'; 
+import App from './components/App';  
 
 test('renders the Predictor page by default', () => {
   // Wrap the App in MemoryRouter for Router context and render the component

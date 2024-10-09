@@ -55,17 +55,20 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.25.7",
+    "@babel/preset-env": "^7.25.7",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
+    "babel-jest": "^29.7.0",
     "gh-pages": "^6.1.1",
     "jest": "^27.5.1"
   },
   "jest": {
     "transformIgnorePatterns": [
-      "/node_modules/(?!axios/.*)"  
+      "/node_modules/(?!axios/.*)"
     ],
     "transform": {
-      "^.+\\.jsx?$": "babel-jest"   
+      "^.+\\.jsx?$": "babel-jest"
     }
   }
 }
