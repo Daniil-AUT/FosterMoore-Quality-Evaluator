@@ -1,69 +1,67 @@
 import unittest
-from unittest.mock import patch, MagicMock
-from app import app, fetch_jira_user_stories
-from llm import get_unambiguous_suggestions
+import json
+from app import app
 
-class TestApp(unittest.TestCase):
-    def setUp(self):
-        # Set up the Flask test client
-        self.client = app.test_client()
+class FlaskAppTests(unittest.TestCase):
 
-    @patch('app.fetch_jira_user_stories')
-    def test_get_user_stories(self, mock_fetch):
-        # Mock fetch_jira_user_stories to return a sample response
-        mock_fetch.return_value = [
-            {"key": "STORY-1", "summary": "Sample story", "description": "Description", "status": "To Do"}
-        ]
+    # Set up test client
+    @classmethod
+    def setUpClass(cls):
+        cls.client = app.test_client()
+        cls.client.testing = True
 
-        # Simulate a GET request to the /api/user-stories endpoint
-        response = self.client.get('/api/user-stories')
-        
-        # Check the status code
-        self.assertEqual(response.status_code, 200)
-        
-        # Check the response data
-        data = response.get_json()
-        self.assertEqual(len(data['user_stories']), 1)
-        self.assertEqual(data['user_stories'][0]['key'], 'STORY-1')
-
-    @patch('app.fetch_jira_user_stories')
-    def test_get_user_stories_empty(self, mock_fetch):
-        # Mock fetch_jira_user_stories to return an empty list
-        mock_fetch.return_value = []
-
-        # Simulate a GET request to the /api/user-stories endpoint
-        response = self.client.get('/api/user-stories')
-        
-        # Check the status code and ensure it handles empty results
+    # Test prediction for well-formed user stories
+    def test_predict_well_formed_valid_story(self):
+        # Sample payload
+        payload = {
+            'user_story': 'As a user, I want to log in to the platform so I can access my account.'
+        }
+        response = self.client.post('/predict/well-formed', data=json.dumps(payload), content_type='application/json')
         self.assertEqual(response.status_code, 200)
         data = response.get_json()
-        self.assertEqual(len(data['user_stories']), 0)
+        self.assertIn('well_formed_prediction', data)
+        self.assertIn('outcome_text', data)
 
-    @patch('app.get_unambiguous_suggestions')
-    def test_improve_user_story(self, mock_suggestions):
-        # Mock the suggestion function to return sample data
-        mock_suggestions.return_value = [
-            {"Idea": "Clarify the goal", "Justification": "Better understanding", "Discussion Point": "Review with team"}
-        ]
-
-        # Simulate a POST request with a sample user story
-        response = self.client.post('/api/improve-user-story', json={"user_story": "As a user, I want to login."})
-        
-        # Check the status code and response data
-        self.assertEqual(response.status_code, 200)
-        data = response.get_json()
-        self.assertIn('suggestions', data)
-
-    def test_improve_user_story_missing_story(self):
-        # Simulate a POST request without providing a user_story
-        response = self.client.post('/api/improve-user-story', json={})
-        
-        # Check the status code and error message for missing user_story
+    def test_predict_well_formed_missing_story(self):
+        payload = {}
+        response = self.client.post('/predict/well-formed', data=json.dumps(payload), content_type='application/json')
         self.assertEqual(response.status_code, 400)
         data = response.get_json()
         self.assertIn('error', data)
-        self.assertEqual(data['error'], 'User story is required.')
+    
+    # Test prediction for ambiguity in user stories
+    def test_predict_ambiguity_valid_story(self):
+        # Sample payload
+        payload = {
+            'user_story': 'As a user, I want to reset my password when I forget it.'
+        }
+        response = self.client.post('/predict/ambiguity', data=json.dumps(payload), content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        data = response.get_json()
+        self.assertIn('ambiguity_prediction', data)
+        self.assertIn('outcome_text', data)
 
-# Run the unit tests
+    def test_predict_ambiguity_missing_story(self):
+        payload = {}
+        response = self.client.post('/predict/ambiguity', data=json.dumps(payload), content_type='application/json')
+        self.assertEqual(response.status_code, 400)
+        data = response.get_json()
+        self.assertIn('error', data)
+    
+    # Test fetching user stories from Jira (mock test)
+    def test_get_user_stories_missing_parameters(self):
+        response = self.client.get('/api/user-stories')
+        self.assertEqual(response.status_code, 400)
+        data = response.get_json()
+        self.assertIn('error', data)
+    
+    # Test verification of credentials (mock test)
+    def test_verify_credentials_missing(self):
+        payload = {}
+        response = self.client.post('/verify-credentials', data=json.dumps(payload), content_type='application/json')
+        self.assertEqual(response.status_code, 400)
+        data = response.get_json()
+        self.assertIn('error', data)
+
 if __name__ == '__main__':
-    unittest.main(argv=[''], exit=False)
+    unittest.main()
