@@ -45,8 +45,8 @@ const Dashboard = () => {
   // Fetch user stories from API
   useEffect(() => {
     const fetchUserStories = async () => {
-      const { email, apiToken, domain } = location.state || {};
-      if (!email || !apiToken || !domain) {
+      const { email, apiToken, domain, board } = location.state || {};
+      if (!email || !apiToken || !domain || !board) {
         navigate('/');
         return;
       }
@@ -54,7 +54,7 @@ const Dashboard = () => {
       try {
         setIsLoading(true);
         const response = await axios.get('https://fostermoore-quality-evaluator.onrender.com/api/user-stories', {
-          params: { jira_url: domain, jira_project_key: 'SCRUM', username: email, api_token: apiToken },
+          params: { jira_url: domain, jira_project_key: board, username: email, api_token: apiToken },
           timeout: 30000,
         });
         setUserStories(response.data);

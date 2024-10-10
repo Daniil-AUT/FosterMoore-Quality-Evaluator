@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'; // Import useEffect here
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Input, Button, Alert, Typography, Checkbox } from 'antd';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LockOutlined, UserOutlined, ProjectOutlined } from '@ant-design/icons';
 import styles from './Login.module.css';
 
 const { Title } = Typography;
@@ -11,17 +11,17 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [apiToken, setApiToken] = useState('');
   const [domain, setDomain] = useState('');
+  const [board, setBoard] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Moved the domain validation logic inside the component
   const isDomainValid = (domain) => /^https:\/\/[a-zA-Z0-9-]+\.atlassian\.net[\/\\]?$/.test(domain);
 
   const handleSubmit = async (values) => {
-    const { email, apiToken, domain } = values;
+    const { email, apiToken, domain, board } = values;
 
     setIsLoading(true);
     setError('');
@@ -38,6 +38,7 @@ const Login = () => {
         email,
         apiToken,
         jiraDomain: domain,
+        board,
       });
 
       if (verifyResponse.data.success) {
@@ -46,12 +47,14 @@ const Login = () => {
           localStorage.setItem('email', email);
           localStorage.setItem('apiToken', apiToken);
           localStorage.setItem('domain', domain);
+          localStorage.setItem('board', board);
         } else {
           localStorage.removeItem('email');
           localStorage.removeItem('apiToken');
           localStorage.removeItem('domain');
+          localStorage.removeItem('board');
         }
-        navigate('/dashboard', { state: { email, apiToken, domain } });
+        navigate('/dashboard', { state: { email, apiToken, domain, board } });
       } else {
         setError(verifyResponse.data.error || 'Invalid credentials, please try again.');
       }
@@ -68,10 +71,12 @@ const Login = () => {
     const storedEmail = localStorage.getItem('email');
     const storedApiToken = localStorage.getItem('apiToken');
     const storedDomain = localStorage.getItem('domain');
-    if (storedEmail && storedApiToken && storedDomain) {
+    const storedBoard = localStorage.getItem('board');
+    if (storedEmail && storedApiToken && storedDomain && storedBoard) {
       setEmail(storedEmail);
       setApiToken(storedApiToken);
       setDomain(storedDomain);
+      setBoard(storedBoard);
       setRememberMe(true);
     }
   }, []);
@@ -89,7 +94,7 @@ const Login = () => {
         <Form
           layout="vertical"
           onFinish={handleSubmit}
-          initialValues={{ email, apiToken, domain }}
+          initialValues={{ email, apiToken, domain, board }}
           style={{ maxWidth: '500px', width: '100%' }}
         >
           <Form.Item
@@ -137,6 +142,18 @@ const Login = () => {
               prefix={<LockOutlined />}
             />
           </Form.Item>
+          <Form.Item
+            label="Board"
+            name="board"
+            rules={[{ required: true, message: 'Please input your board!' }]}
+          >
+            <Input
+              value={board}
+              onChange={(e) => setBoard(e.target.value)}
+              placeholder="Enter your board name"
+              prefix={<ProjectOutlined />}
+            />
+          </Form.Item>
           <Form.Item>
             <Checkbox 
               checked={rememberMe} 
@@ -147,7 +164,7 @@ const Login = () => {
           </Form.Item>
           <Form.Item>
             <div className={styles.buttonContainer}>
-            <Button type="default" className={styles.goBackButton} onClick={() => navigate('/')}>
+              <Button type="default" className={styles.goBackButton} onClick={() => navigate('/')}>
                 Go Back
               </Button>
               <Button type="primary" htmlType="submit" loading={isLoading} className={styles.loginButton}>
