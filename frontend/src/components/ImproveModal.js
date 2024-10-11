@@ -49,13 +49,13 @@ const ImproveModal = ({ isOpen, onClose, story, storyId, onApply, tips }) => {
     setError(null);
 
     try {
-      const wellFormedResult = await fetch('http://localhost:5000/predict/well-formed', {
+      const wellFormedResult = await fetch('https://fostermoore-quality-evaluator.onrender.com/predict/well-formed', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_story: editedStory }),
       });
 
-      const ambiguityResult = await fetch('http://localhost:5000/predict/ambiguity', {
+      const ambiguityResult = await fetch('https://fostermoore-quality-evaluator.onrender.com/predict/ambiguity', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_story: editedStory }),
