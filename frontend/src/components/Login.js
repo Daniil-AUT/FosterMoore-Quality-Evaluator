@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Input, Button, Alert, Typography, Checkbox } from 'antd';
-import { LockOutlined, UserOutlined, ProjectOutlined } from '@ant-design/icons';
+import { LockOutlined, UserOutlined, ProjectOutlined, GlobalOutlined } from '@ant-design/icons';
 import styles from './Login.module.css';
 
 const { Title } = Typography;
 
 const Login = () => {
+  const [form] = Form.useForm();
   const [email, setEmail] = useState('');
   const [apiToken, setApiToken] = useState('');
   const [domain, setDomain] = useState('');
@@ -42,7 +43,7 @@ const Login = () => {
       });
 
       if (verifyResponse.data.success) {
-        setSuccess('Credentials verified successfully. Fetching user stories...');
+        setSuccess(verifyResponse.data.message || 'Credentials verified successfully. Fetching user stories...');
         if (rememberMe) {
           localStorage.setItem('email', email);
           localStorage.setItem('apiToken', apiToken);
@@ -56,10 +57,28 @@ const Login = () => {
         }
         navigate('/dashboard', { state: { email, apiToken, domain, board } });
       } else {
-        setError(verifyResponse.data.error || 'Invalid credentials, please try again.');
+        setError(verifyResponse.data.error || 'Verification failed. Please check your credentials and try again.');
       }
     } catch (err) {
-      const errorMessage = err.response?.data?.error || err.message || 'An error occurred. Please try again.';
+      let errorMessage = 'An error occurred. Please try again.';
+      if (err.response) {
+        switch (err.response.status) {
+          case 400:
+            errorMessage = 'Missing required credentials or board information.';
+            break;
+          case 401:
+            errorMessage = 'Invalid user credentials. Please check your email and API token.';
+            break;
+          case 404:
+            errorMessage = `Board '${board}' not found. Please check the board name and try again.`;
+            break;
+          case 500:
+            errorMessage = 'Server error. Please try again later.';
+            break;
+          default:
+            errorMessage = err.response.data?.error || errorMessage;
+        }
+      }
       console.error('API error:', errorMessage);
       setError(errorMessage);
     } finally {
@@ -73,13 +92,15 @@ const Login = () => {
     const storedDomain = localStorage.getItem('domain');
     const storedBoard = localStorage.getItem('board');
     if (storedEmail && storedApiToken && storedDomain && storedBoard) {
-      setEmail(storedEmail);
-      setApiToken(storedApiToken);
-      setDomain(storedDomain);
-      setBoard(storedBoard);
+      form.setFieldsValue({
+        email: storedEmail,
+        apiToken: storedApiToken,
+        domain: storedDomain,
+        board: storedBoard,
+      });
       setRememberMe(true);
     }
-  }, []);
+  }, [form]);
 
   return (
     <div className={styles.login}>
@@ -92,66 +113,60 @@ const Login = () => {
           <Alert message={success} type="success" showIcon style={{ marginBottom: '16px' }} />
         )}
         <Form
+          form={form}
           layout="vertical"
           onFinish={handleSubmit}
-          initialValues={{ email, apiToken, domain, board }}
           style={{ maxWidth: '500px', width: '100%' }}
         >
           <Form.Item
-            label="Domain"
             name="domain"
+            label="Jira Domain"
             rules={[
-              {
-                required: true,
-                message: 'Please input your domain!',
-              },
-              {
+              { required: true, message: 'Please enter your Jira domain!' },
+              { 
                 validator: (_, value) =>
-                  isDomainValid(value) ? Promise.resolve() : Promise.reject(new Error('Invalid domain format. Use https://your-domain.atlassian.net')),
-              },
+                  isDomainValid(value) 
+                    ? Promise.resolve()
+                    : Promise.reject(new Error('Invalid domain format. Use https://your-domain.atlassian.net'))
+              }
             ]}
           >
-            <Input
-              value={domain}
-              onChange={(e) => setDomain(e.target.value)}
+            <Input 
+              prefix={<GlobalOutlined />}
               placeholder="https://your-domain.atlassian.net"
             />
           </Form.Item>
           <Form.Item
-            label="Email"
             name="email"
-            rules={[{ required: true, message: 'Please input your email!' }]}
+            label="Email"
+            rules={[
+              { required: true, message: 'Please enter your email!' },
+              { type: 'email', message: 'Please enter a valid email address!' }
+            ]}
           >
-            <Input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your-email@example.com"
+            <Input 
               prefix={<UserOutlined />}
+              placeholder="your-email@example.com"
             />
           </Form.Item>
           <Form.Item
-            label="API Token"
             name="apiToken"
-            rules={[{ required: true, message: 'Please input your API token!' }]}
+            label="API Token"
+            rules={[{ required: true, message: 'Please enter your API token!' }]}
           >
-            <Input.Password
-              value={apiToken}
-              onChange={(e) => setApiToken(e.target.value)}
-              placeholder="Enter your API token"
+            <Input.Password 
               prefix={<LockOutlined />}
+              placeholder="Enter your API token"
             />
           </Form.Item>
           <Form.Item
-            label="Board"
             name="board"
-            rules={[{ required: true, message: 'Please input your board!' }]}
+            label="Board Name"
+            rules={[{ required: true, message: 'Please enter your board name!' }]}
           >
-            <Input
-              value={board}
-              onChange={(e) => setBoard(e.target.value)}
-              placeholder="Enter your board name"
+            <Input 
               prefix={<ProjectOutlined />}
+              placeholder="Enter your board name"
             />
           </Form.Item>
           <Form.Item>
@@ -164,11 +179,20 @@ const Login = () => {
           </Form.Item>
           <Form.Item>
             <div className={styles.buttonContainer}>
-              <Button type="default" className={styles.goBackButton} onClick={() => navigate('/')}>
+              <Button 
+                type="default" 
+                className={styles.goBackButton} 
+                onClick={() => navigate('/')}
+              >
                 Go Back
               </Button>
-              <Button type="primary" htmlType="submit" loading={isLoading} className={styles.loginButton}>
-                {isLoading ? 'Logging in...' : 'Login'}
+              <Button 
+                type="primary" 
+                htmlType="submit" 
+                loading={isLoading} 
+                className={styles.loginButton}
+              >
+                {isLoading ? 'Verifying...' : 'Login'}
               </Button>
             </div>
           </Form.Item>

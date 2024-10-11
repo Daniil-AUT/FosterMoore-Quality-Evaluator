@@ -334,20 +334,42 @@ def verify_credentials():
     email = data.get('email')
     api_token = data.get('apiToken')
     jira_domain = data.get('jiraDomain')
-
-    if not email or not api_token or not jira_domain:
-        return jsonify({"error": "Missing required credentials."}), 400
+    board = data.get('board') + " board"
+    print("HERE")
+    if not email or not api_token or not jira_domain or not board:
+        return jsonify({"error": "Missing required credentials or board information."}), 400
 
     try:
-        response = requests.get(f"{jira_domain}/rest/api/3/myself", auth=HTTPBasicAuth(email, api_token))
-        if response.status_code == 200:
-            return jsonify({"success": True}), 200
-        else:
-            return jsonify({"success": False, "error": "Invalid credentials."}), 401
-    except requests.exceptions.RequestException as e:
-        logging.error(f"Error verifying credentials: {e}")
-        return jsonify({"error": "Verification failed."}), 500
+        user_response = requests.get(
+            f"{jira_domain}/rest/api/3/myself",
+            
+            auth=HTTPBasicAuth(email, api_token)
+        )
+        
+        if user_response.status_code != 200:
+            print("GOOD")
+            return jsonify({"success": False, "error": "Invalid user credentials."}), 401
 
+        boards_response = requests.get(
+            f"{jira_domain}/rest/agile/1.0/board",
+            auth=HTTPBasicAuth(email, api_token)
+        )
+        
+        if boards_response.status_code != 200:
+            return jsonify({"success": False, "error": "Failed to retrieve boards. Please check your domain and permissions."}), 401
+
+        boards = boards_response.json().get('values', [])
+        board_exists = any(b['name'].lower() == board.lower() for b in boards)
+
+        if not board_exists:
+            return jsonify({"success": False, "error": f"Board '{board}' not found. Please check the board name and try again."}), 404
+
+        return jsonify({"success": True, "message": "Credentials verified and board found successfully."}), 200
+
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Error verifying credentials or board: {e}")
+        return jsonify({"error": "Verification failed due to a network or server error. Please try again later."}), 500
+    
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))  # Default to 5000 if PORT not set
     app.run(host='0.0.0.0', port=port)
