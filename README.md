@@ -105,4 +105,4 @@ These adjustments are necessary for the application to function correctly and co
 
 ## Homepage
 
-For more information, visit the project [homepage](https://foster-moore-quality-evaluator.vercel.app).
+For more information on how the application should operate, please visit the project [homepage](https://foster-moore-quality-evaluator.vercel.app).
