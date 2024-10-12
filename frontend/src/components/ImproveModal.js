@@ -100,7 +100,7 @@ const ImproveModal = ({ isOpen, onClose, story, storyId, onApply, tips }) => {
   
     try {
       // Fetch suggestions based on the current predictions
-      const suggestionsResult = await fetch('http://localhost:5000/suggestions', {
+      const suggestionsResult = await fetch('https://fostermoore-quality-evaluator.onrender.com/suggestions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
