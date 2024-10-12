@@ -60,29 +60,69 @@ Automated the identification and suggested improvements of user story quality, w
 
 1. Clone the repository:
    ```
-git clone https://github.com/Daniil-AUT/FosterMoore-Quality-Evaluator.git
-cd FosterMoore-Quality-Evaluator
-
-
-2. Install JavaScript dependencies:
-npm install
-
-
-3. Install Python dependencies:
-pip install -r requirements.txt
-
+   git clone https://github.com/Daniil-AUT/FosterMoore-Quality-Evaluator.git
+   ```
+2. Open the terminal and Navigate to the Project's Root Folder:
+   ```
+   cd FosterMoore-Quality-Evaluator
+   ```
+4. Navigate to 'frontend' folder:
+   ```
+   cd frontend
+   ``` 
+5.Install JavaScript dependencies:
+  ```
+  npm install
+  ```
+6. Navigate to 'api/backend' folder:
+  ```
+  cd ../api/backend
+  ```
+7. Create Python environment:
+   For Windows:
+   ```
+   python -m venv venv
+   ```
+   For MAC:
+   ```
+   python3 -m venv venv
+   ```
+8. Activate the environment:
+   ```
+   venv/Scripts/Activate
+   ```
+9. Install Python dependencies
+  ```
+  pip install -r requirements.txt
+  ```
 
 ### Running the Application
 
 1. Start the backend server:
-python server.py
-
-
-2. Start the frontend development server:
-npm start
-
-
-3. Open your browser and navigate to `http://localhost:3000` to view the application.
+  For Windows:
+   ```
+   python app.py
+   ```
+   For MAC:
+   ```
+   python3 app.py
+   ```
+2. Navigate to the frontend folder
+   ```
+   cd ../../frontend
+   ```
+3. Start the frontend development server:
+   ```
+   npm start
+   ```
+4. Open your browser and navigate to `http://localhost:3000` to view the application.
 
 ## Homepage
 For more information, visit the project [homepage](https://foster-moore-quality-evaluator.vercel.app).
+   
+
+
+
+
+
+   
