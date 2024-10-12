@@ -98,7 +98,7 @@ Our software tool automates the evaluation of the quality of selected user stori
 
 The API endpoints and HTML addresses in this application are configured to the Hosted Server on **Render** and do not point to the server being set up. Please ensure to update the following addresses in your configuration files to match your backend server's URL:
 
-- **API Endpoints**: Adjust the base URL to point to the correct backend server location. This means replacing this address 'https://fostermoore-quality-evaluator.onrender.com'
+- **API Endpoints**: Adjust the base URL to point to the correct backend server location. This means replacing this address `https://fostermoore-quality-evaluator.onrender.com` with the following: `http://localhost:5000`
 - **HTML Addresses**: Ensure that any hardcoded paths in your HTML files reflect the appropriate routes for your backend.
 
 These adjustments are necessary for the application to function correctly and communicate with your backend server.
