@@ -19,9 +19,33 @@ Our software tool automates the evaluation of the quality of selected user stori
 
 ### Prerequisites
 
-- Node.js (version 14.x or later)
-- Python (version 3.8 or later)
-- npm (version 6.x or later)
+### Prerequisites
+
+- **Node.js** (version 14.x or later)  
+  [Download Node.js](https://nodejs.org/en/download/)  
+  To check if Node.js is installed, run:  
+  ```bash
+  node -v
+  ```
+  
+- **Python** (version 3.8 or later)  
+  [Download Python](https://www.python.org/downloads/)  
+  To check if Python is installed, run:  
+  ```bash
+  python --version
+  ```
+  For MAC users
+  ```
+  python3 --version
+  ```
+
+- **npm** (version 6.x or later)  
+  npm is included with Node.js. You can download Node.js, which includes npm, from the following link:  
+  [Download Node.js](https://nodejs.org/en/download/)  
+  To check if npm is installed, run:  
+  ```bash
+  npm -v
+  ```
 
 ### Installation
 
