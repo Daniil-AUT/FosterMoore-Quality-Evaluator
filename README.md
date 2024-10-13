@@ -30,7 +30,7 @@ Our software tool automates the evaluation of the quality of selected user stori
    git clone https://github.com/Daniil-AUT/FosterMoore-Quality-Evaluator.git
    ```
 
-2. Open the terminal and Navigate to the Project's Root Folder:
+2. Open in the IDE editor of your choice (preferrably Visual Studio Code), open the the terminal and Navigate to the Project's Root Folder:
    ```
    cd FosterMoore-Quality-Evaluator
    ```
@@ -82,7 +82,7 @@ Our software tool automates the evaluation of the quality of selected user stori
      python3 app.py
      ```
 
-2. Assuming You Have Opened A New Terminal Window with the Root as the Default Path, Navigate to the frontend folder:
+2. Create and open a new terminal Window with the `root` as the Default Path, and navigate to the frontend folder:
    ```
    cd frontend
    ```
