@@ -82,14 +82,14 @@ Our software tool automates the evaluation of the quality of selected user stori
      python3 app.py
      ```
 
-2. Navigate to the frontend folder:
+2. Assuming You Have Opened A New Terminal Window with the Root as the Default Path, Navigate to the frontend folder:
    ```
-   cd ../../frontend
+   cd frontend
    ```
 
 3. Start the frontend development server:
    ```
-   npm start
+   npm run start
    ```
 
 4. Open your browser and navigate to `http://localhost:3000` to view the application.
